@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <title>String Compare</title>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+</head>
+<style type="text/css">
+  .css1 {
+    background-color: #f7b59b;
+  }
+  .css2{
+    background-color: #bed5e5;
+  }
+
+</style>
+<body>
+
+<div class="container">
+  <h2>Compare Strings</h2>
+  <form id=''>
+    <div class="form-group">
+      <label for="email">String 1:</label>
+      <input type="text" class="form-control" id="str1" placeholder="Enter String One" required>
+    </div>
+    <div class="form-group">
+      <label for="pwd">String 2:</label>
+      <input type="text" class="form-control" id="str2" placeholder="Enter String Two" required>
+    </div>
+     
+    <button type="button" class="btn btn-default button">Compare</button>
+  </form>
+<br>
+  <p id='str1_res'></p>
+  <p id='str2_res'></p>
+</div>
+
+</body>
+<script type="text/javascript">
+  $('#str2').keypress(function () {
+      var str1 = $('#str1').val();
+      var str2 = $('#str2').val();
+      var url = 'test.php';
+      $.post("test.php", {str1: str1,str2: str2}, function(result){
+          data = JSON.parse( result );
+          
+          $('#str1_res').html(data['subject']);
+          $('#str2_res').html(data['pattern']);
+          //$('#str1_res .css1').css('color','red');
+      });
+  });
+
+  $('#str1').keypress(function () {
+      var str1 = $('#str1').val();
+      var str2 = $('#str2').val();
+      var url = 'test.php';
+      $.post("test.php", {str1: str1,str2: str2}, function(result){
+          data = JSON.parse( result );
+          
+          $('#str1_res').html(data['subject']);
+          $('#str2_res').html(data['pattern']);
+          //$('#str1_res .css1').css('color','red');
+      });
+  });
+
+  $('.button').click(function () {
+      var str1 = $('#str1').val();
+      var str2 = $('#str2').val();
+      var url = 'test.php';
+      $.post("test.php", {str1: str1,str2: str2}, function(result){
+          data = JSON.parse( result );
+          
+          $('#str1_res').html(data['subject']);
+          $('#str2_res').html(data['pattern']);
+          //$('#str1_res .css1').css('color','red');
+      });
+  });
+</script>
+</html>
+
